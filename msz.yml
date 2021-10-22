@@ -1,0 +1,23 @@
+- name: This is my web-server
+  hosts: web
+  tasks:
+   - name: This is my Copy task
+     copy:
+       src: /etc/group
+       dest: /tmp/
+    
+   - file:
+      path: /tmp/ansible 
+      state: directory
+
+- name: This is my app-server
+  hosts: app
+  tasks:
+   - name: this is my htttpd module
+     yum:
+      name: httpd
+      state: present
+
+   - service:
+       name: httpd
+       state: started
