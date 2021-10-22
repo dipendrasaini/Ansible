@@ -1,0 +1,28 @@
+- hosts: all
+  vars_files:
+   - /root/var/var.yml 
+   
+  vars: 
+    mydir: /tmp/starboy
+    myfile: /etc/passwd
+    mypkg: 
+      - httpd
+      - nfs-utils
+      - tree
+      - samba   
+
+  tasks:
+   -  name: "This task going to create directory {{mydir}}"
+      file:
+         path: "{{ mydir}}"
+         state: directory
+
+   -  name: "This task going to copy file inside starboy"
+      copy:
+         src: "{{myfile}}"
+         dest: "{{mydir}}"
+
+   -  name: "this task going to install packages"
+      yum :
+         name: "{{mypkg}}"
+         state: present
