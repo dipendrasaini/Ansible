@@ -1,0 +1,28 @@
+
+- hosts: all
+  tasks:
+    - yum:
+         name: httpd
+         staete: present
+    
+    - copy:
+          src: /website/
+          dest: /var/www/html/
+     
+    - lineinfile:
+          path: /etc/httpd/conf/httpd.conf
+    	  regexp: '^Listen'
+	  insertafter: '^#Listen'
+    	  line: 'Listen 8080'
+
+
+    - firewalld:
+                port: 8080/tcp
+    	 	permanent: yes
+    	 	immediate: yes
+    	 	state: enabled
+
+    - service:
+        name : httpd
+        state: started
+    
