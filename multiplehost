@@ -1,0 +1,19 @@
+- hosts: web
+  tasks:
+   - copy:
+       src: /etc/group
+       dest: /tmp/
+    
+   - file:
+      path: /tmp/ansible 
+      state: directory
+
+- hosts: app
+  tasks:
+   - yum:
+      name: httpd
+      state: present
+
+   - service:
+       name: httpd
+       state: started
