@@ -1,0 +1,19 @@
+[web:vars]
+mydir =/tmp/babal
+myfile =/etc/bashrc
+mypkg =nfs-utils,samba ,tree,
+
+[app:vars]
+mydir =/tmp/jassi
+myfile =/etc/hostname
+mypkg =nfs-utils,samba ,tree,
+
+
+
+note:
+
+[web]
+192.168.1.2 mydir=/tmp/india myfile=/etc/passwd mypkg=httpd,nfs-utils,samba,tree
+
+[app]
+192.168.1.3 mydir=/tmp/bharat myfile=/etc/group mypkg=httpd,nfs-utils,samba,tree
